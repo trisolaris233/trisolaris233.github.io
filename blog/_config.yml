@@ -1,0 +1,57 @@
+theme: polk
+post_asset_folder: true
+title: 阳光加冰の博客
+subtitle: veni, vidi, vici
+url: https://trisolaris233.github.io/
+author: 阳光加冰
+
+language: 
+- en
+- zh-tw
+- zh-cn
+
+highlight:
+  enable: false # we will use the prism plugin instead
+
+plugin:
+  - hexo-generator-category-enhance
+  - hexo-generator-feed
+  - hexo-asset-image
+  - hexo-prism-plugin
+  - hexo-toc
+  # ... other plugins you'd like to enable
+
+# Generate archive page
+archive_generator:
+  per_page: 0
+
+# Generate categories index page and each category page
+category_generator:
+  per_page: 20
+  enable_index_page: true
+
+# Generate tags index page and each tag page
+tag_generator:
+  per_page: 20
+  enable_index_page: true
+
+# Generator atom feed for you website
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+# For syntax highlighting
+prism_plugin:
+  mode: 'preprocess'
+  theme: 'default'
+  line_number: true 
+
+deploy:
+  type: git
+  repo: git@github.com:trisolaris233/trisolaris233.github.io.git
+  branch: master
+
+toc:
+  maxDepth: 3
+

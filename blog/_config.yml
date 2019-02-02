@@ -11,7 +11,7 @@ language:
 - zh-cn
 
 highlight:
-  enable: false # we will use the prism plugin instead
+  enable: true # we will use the prism plugin instead
 
 plugin:
   - hexo-generator-category-enhance

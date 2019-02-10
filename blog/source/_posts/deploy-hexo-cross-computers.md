@@ -41,9 +41,20 @@ git push origin hexo
 
 {% blockquote %}
 Linux系统下如果出现安装有ERR的情况， 可以检查是否有用`sudo npm install`， 安装软件包时， sudo是必要的。
+
+而且需要注意的是：`npm`的源的设定是对于当前用户的， 也就是说如果执行`sudo npm install ...`可能会非常慢！ 会出现看似卡着不动的现象。 对于这种可以建议开启`--verbose`选项，该命令可以查看具体进度，排坑必备。 不过我的建议是对`root`用户也执行一次换源: `sudo npm config set registry https://registry.npm.taobao.org `
+
 {% endblockquote %}
 
 `npm install`顺利执行后， 就可以使用hexo了（因为hexo也一并安装了）。
+
+{% blockquote %}
+
+如果出现使用不了的情况可以再执行一次`[sudo] npm install hexo-cli -g `，安装完后可以直接使用。
+
+{% endblockquote %}
+
+
 
 ## 多台电脑同时编辑
 有了以上操作之后，多边编辑同一个hexo的博客就不难实现。 每台参与编辑的电脑只要在编辑之前拉取最新的repo即可： `git pull`， 操作完后， 执行commit。 然后在另一台电脑上也可以执行同样的操作并随时看到更新。

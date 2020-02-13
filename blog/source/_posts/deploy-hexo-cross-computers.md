@@ -12,7 +12,7 @@ tags:
 
 
 ## 备份hexo
-之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
+之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个**已经安装好的hexo**：
 1. 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。
 2. 将博客克隆到本地: `git clone https://github.com/trisolaris233/trisolaris233.github.io`
 3. 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。
@@ -46,13 +46,17 @@ Linux系统下如果出现安装有ERR的情况， 可以检查是否有用`sudo
 
 {% endblockquote %}
 
-`npm install`顺利执行后， 就可以使用hexo了（因为hexo也一并安装了）。
+`npm install -g`顺利执行后， 就可以使用hexo了（因为hexo也一并安装了）。
 
 {% blockquote %}
+#####2020/2/13按:
+这样做的原理和前提是npm的执行目录下有packge.json文件。
+由于之前已经安装过hexo，npm会把安装过的包(也就是hexo)记录到packge.json文件中。
+而在某个目录下执行npm install就是安装当前目录中packge.json文件中记录的包，详情可以参考npm官方文档。
 
-如果出现使用不了的情况可以再执行一次`[sudo] npm install hexo-cli -g `，安装完后可以直接使用。
-
+还有-g，这个g实际上是globally的缩写，如果不加g那么包就只会被装到当前目录下，加上-g就是全局安装，如果不加-g的话会无法使用的。就算在当前目录都不行
 {% endblockquote %}
+
 
 
 

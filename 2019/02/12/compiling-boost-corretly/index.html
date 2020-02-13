@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en,zh-tw,zh-cn,default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>【以渔授】在9102年编译boost - 阳光加冰の博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content="boost,C++">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="阳光加冰の博客" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+</head></html>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">阳光加冰の博客</a>
+    <div class="subtitle">veni, vidi, vici</div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">【以渔授】在9102年编译boost</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2019-02-12</span>
+  </div>
+  <div class="post-content">
+    <p>提到<a href="https://www.boost.org" target="_blank" rel="noopener">boost</a>，大家都不会陌生，这篇文章简要的聊一聊boost的编译。</p>
+<p>刚开始你或许和我一样不知道编译boost该从何下手，于是你只能寻求百度和google，然而网上的文章不一定总是最新的，他那些<code>--with</code>也并不一定就是你想要的，那编他做啥？ 是的，这篇文章我们不聊怎么编译boost，然后丢给你一堆命令，你放在自己电脑上能跑就开心了，不能跑就换下一个教程，实在是浪费了手头就有的大好资源啊。</p>
+<blockquote><p>接下来阅读的内容可能需要读者有一定的洋文阅读水平， 这是十分需要且必要的技能！</p>
+</blockquote>
+<p>首先你既然要整boost那么一定得用它的库吧， boost现在依旧是非标准的最全C++第三方库，每次的标准都有不定量的boost库内容入选其中，即使现在标准库越来越强悍，有了更多库的支持，加上boost就如虎添翼了。</p>
+<h2 id="按需求选择编译or-Not"><a href="#按需求选择编译or-Not" class="headerlink" title="按需求选择编译or Not"></a>按需求选择编译or Not</h2><p>如果你是<code>Windows</code>用户， 你大可以选择<code>预编译版本</code>， 这么周到的服务， 何乐而不为呢？ 如果不是有些库必须在特定平台重新编译， 否则谁愿意折腾呢？（<del>当然，我相信愿意折腾的大有人在</del>）。哪里找到预编译版本？ 传送门:<a href="https://www.boost.org" target="_blank" rel="noopener">boost官网</a>，找到<code>Download</code>, 然后找到<code>prebuilt</code>!</p>
+<p>如果你是<code>linux</code>用户，那么编译是少不了的，当然不编译你还是可以使用一大堆现成的库， 无需编译。</p>
+<h2 id="从下载源码说起"><a href="#从下载源码说起" class="headerlink" title="从下载源码说起"></a>从下载源码说起</h2><p>这有啥好说的， 下载源码， 从<a href="https://www.boost.org" target="_blank" rel="noopener">官网</a>开始。</p>
+<h2 id="文档阅读"><a href="#文档阅读" class="headerlink" title="文档阅读"></a>文档阅读</h2><p>下载解压后， 未免迷茫了， 接下来咋整？ 编译啊！ 我们参观一下最新版<code>boost-1.69</code>的解压目录：</p>
+<img src="/2019/02/12/compiling-boost-corretly/boost-directory.png">
+<p>如图所示， 我们可以看到一个叫做<code>doc</code>的文件夹，这个是boost送给你的文档(Document)！ 我们<br>进入doc文件夹。</p>
+<img src="/2019/02/12/compiling-boost-corretly/boost-doc.png">
+<p>进入doc我们发现， 里面有几个文件夹一下子就引起了我们的关注， 比如<code>html</code>和<code>pdf</code>， 我们通过文件夹名称就可以猜测出里面分别放的是html格式和pdf格式的文档， 准备的多么精心， 不看可惜了！</p>
+<p>进入html文件夹打开<code>index.html</code>即可在浏览器里查看boost文档（其实第一层目录就有一个<code>index.html</code>, 不过是一样的，这里打开的html可以通过点击网页上的<code>HOME</code>来到第一层的<code>html</code>）， 通过阅读文档， 我们可以知道如何编译， 而且是如何编译自己想编译的东西。 如文档所云（打开后点击页面上的HOME， 找到Geting Started后进入guide，在页面右下角可以看到两个超链：分别指向Windows和linux，此时按照自己的环境选择就成）<br>以linux为例：<br><img src="/2019/02/12/compiling-boost-corretly/build-boost.png"></p>
+<p>可以看到一个目录， 看到<code>5.1 Easy Build and Install</code>可以看到相关编译安装的内容，点击跳转， 便可以看到关于如何编译和安装的内容。</p>
+<p>接下来的就是自己尝试， 阅读文档， 除非实在是遇到以个人力无法解决的困难， 不然还是以官方文档为准。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/C/">C++</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/boost/">boost</a></li></ul>
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2020
+  <span class="author">
+    阳光加冰
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

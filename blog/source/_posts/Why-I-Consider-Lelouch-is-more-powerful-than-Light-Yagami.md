@@ -96,7 +96,7 @@ On the other side，鲁鲁修和月不一样，鲁鲁修的终极目标是建成
 既然不对动漫做过多的分析，这篇文章的意义在何？其实一个目的是我昨天无意间在Quora上看到一个非常赞的高票回答，其中观点鞭辟入里，作者在行文中大有写essay的风格，这个回答激励了我，使我愿意把它贴出来，我的其中一些观点也是吸收了这个回答才得以形成的：[Who is more intelligent,Yagami Light or Lelouch vi Britannia?](https://www.quora.com/Who-is-more-intelligent-Yagami-Light-or-Lelouch-vi-Britannia)(之前说的一会再说的就是这篇文章里面写到的，如果有兴趣可以看看)。还有原因是我比较喜欢向朋友推荐自己喜欢的动漫，总不能把“好看”,“真的非常好看”作为理由吧，那真的毫无说服力了，好看，一部动漫，总有人会觉得它好看(~~异世界?!好看，太TM好看了。。。。。。。~~)。
 
 ### 作为一种艺术作品而存在着
-迄今为止，动漫可以说是对我身心塑造最多的一种艺术形式了(虽然不可能是决定性内容)。一部好的动漫可以让你的心情为之振奋，Certainly, It can also feel you with **determination**!*(注:此处只是在玩一个我知道的梗，等我真正通关了之后再来擦掉。)
+迄今为止，动漫可以说是对我身心塑造最多的一种艺术形式了(虽然不可能是决定性内容)。一部好的动漫可以让你的心情为之振奋，Certainly, It can also fill you with **determination**!*(注:此处只是在玩一个我知道的梗，等我真正通关了之后再来擦掉。)
 
 
 

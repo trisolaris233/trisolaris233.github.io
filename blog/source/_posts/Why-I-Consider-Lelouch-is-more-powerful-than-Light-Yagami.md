@@ -1,10 +1,12 @@
+
 ---
 title: 为什么我认为鲁鲁修比夜神月更强
-date: '2020-02-17 21:00'
+date: 2020-02-17 21:00
 tags:
   - anime
 abbrlink: 9397
----
+categories:
+  - Anime
 
 ---------
 

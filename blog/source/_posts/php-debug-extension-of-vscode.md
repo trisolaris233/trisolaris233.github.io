@@ -6,6 +6,8 @@ tags:
   - linux
 abbrlink: 19517
 date: 2019-02-10 22:20:32
+categories:
+  - Coding
 ---
 
 `vscode`的`php debug`插件简直是巨坑！

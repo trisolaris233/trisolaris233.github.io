@@ -4,6 +4,8 @@ tags:
   - makefile
 abbrlink: 20852
 date: 2019-02-02 13:42:48
+categories:
+  - 杂说
 ---
 
 最近在linux上写了一个小项目，接触了make等工具，这次就通过一些辅助例子和我这个小项目来介绍一下makefile的基本写法。

@@ -1,12 +1,12 @@
 .sidebar {
   position: absolute;
-  top: 0;
+  top: 15px;
   left: 0;
   bottom: 0;
-  width: 400px;
+  width: 350px;
   height: 100%;
   overflow: hidden;
-  background-color: #333;
+  background-color: #389a56;
   color: #fff;
   text-align: right;
 }
@@ -15,6 +15,7 @@
 }
 .sidebar .title {
   margin-bottom: 0px;
+  font-weight: bold;
 }
 .sidebar .title a {
   color: #fff;
@@ -51,7 +52,6 @@
 .sidebar .avatar img {
   width: 120px;
   height: 120px;
-  border: 5px solid #d3d3d3;
   border-radius: 2px;
 }
 .sidebar .nav {
@@ -64,13 +64,11 @@
 .sidebar .nav > li > a {
   display: block;
   padding: 5px 25px;
-  color: color-link-sidebar;
+  color: #fff;
   border-right: 5px solid transparent;
 }
 .sidebar .nav > li > a:hover {
-  background-color: #808080;
-  color: #fff;
-  border-right: 5px solid #d3d3d3;
+  background-color: #4cae6a;
 }
 .sidebar .category-list,
 .sidebar .tag-list,
@@ -110,7 +108,7 @@
 .sidebar .archive-list .archive-list-item a {
   width: 80%;
   display: inline-block;
-  color: #86a87f;
+  color: #fff;
 }
 .sidebar .category-list .category-list-item a:hover,
 .sidebar .tag-list .category-list-item a:hover,
@@ -121,7 +119,7 @@
 .sidebar .category-list .archive-list-item a:hover,
 .sidebar .tag-list .archive-list-item a:hover,
 .sidebar .archive-list .archive-list-item a:hover {
-  color: #fff;
+  background-color: #4cae6a;
 }
 .sidebar .category-list .category-list-item .tag-list-count,
 .sidebar .tag-list .category-list-item .tag-list-count,
@@ -159,7 +157,7 @@
 @media mq-mobile {
   .sidebar {
     left: -400px;
-    width: 300px;
+    width: 200px;
     max-width: 100%;
     z-index: 9999999;
     transition-duration: 0.3s;

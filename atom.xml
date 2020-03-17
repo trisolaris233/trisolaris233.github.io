@@ -6,17 +6,48 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://trisolaris233.github.io/"/>
-  <updated>2020-03-17T13:52:09.584Z</updated>
+  <updated>2020-03-17T19:17:54.766Z</updated>
   <id>https://trisolaris233.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Get了新主题</title>
+    <link href="https://trisolaris233.github.io/posts/14982/"/>
+    <id>https://trisolaris233.github.io/posts/14982/</id>
+    <published>2020-03-17T15:56:14.000Z</published>
+    <updated>2020-03-17T19:17:54.766Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上一个博客打脸了23333，今天突然来了兴致，于是来捣鼓一番原先的博客。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;新的东西&quot;&gt;&lt;a href=&quot;#新的东西&quot; class=&quot;headerlink&quot; title=&quot;新的东西&quot;&gt;&lt;/a&gt;新的东西&lt;/h2&gt;&lt;p&gt;主题是&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Blogging" scheme="https://trisolaris233.github.io/categories/Blogging/"/>
+    
+    
+      <category term="hexo" scheme="https://trisolaris233.github.io/tags/hexo/"/>
+    
+      <category term="theme" scheme="https://trisolaris233.github.io/tags/theme/"/>
+    
+  </entry>
   
   <entry>
     <title>高考前的最后一篇文章</title>
     <link href="https://trisolaris233.github.io/posts/46161/"/>
     <id>https://trisolaris233.github.io/posts/46161/</id>
     <published>2020-02-27T01:21:17.000Z</published>
-    <updated>2020-03-17T13:52:09.584Z</updated>
+    <updated>2020-03-17T15:52:43.309Z</updated>
     
     <summary type="html">
     
@@ -31,6 +62,8 @@
     </summary>
     
     
+      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
+    
     
       <category term="no" scheme="https://trisolaris233.github.io/tags/no/"/>
     
@@ -41,7 +74,7 @@
     <link href="https://trisolaris233.github.io/posts/39249/"/>
     <id>https://trisolaris233.github.io/posts/39249/</id>
     <published>2020-02-24T16:03:39.000Z</published>
-    <updated>2020-03-17T13:52:09.474Z</updated>
+    <updated>2020-03-17T15:52:21.501Z</updated>
     
     <summary type="html">
     
@@ -57,6 +90,8 @@
     
     </summary>
     
+    
+      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
     
     
       <category term="life" scheme="https://trisolaris233.github.io/tags/life/"/>
@@ -94,7 +129,7 @@
     <link href="https://trisolaris233.github.io/posts/9397/"/>
     <id>https://trisolaris233.github.io/posts/9397/</id>
     <published>2020-02-17T13:00:00.000Z</published>
-    <updated>2020-03-17T13:52:09.499Z</updated>
+    <updated>2020-03-17T18:56:28.362Z</updated>
     
     <summary type="html">
     
@@ -102,15 +137,17 @@
       
         
         
-          &lt;hr&gt;
-&lt;blockquote&gt;&lt;p&gt;——&lt;strong&gt;&lt;em&gt;可以开枪的，只有做好被杀觉悟的人&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;blockquote&gt;&lt;p&gt;——&lt;strong&gt;&lt;em&gt;可以开枪的，只有做好被杀觉悟的人&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;footer&gt;&lt;strong&gt;Lelouch·vi·Britannia&lt;/strong&gt;&lt;/footer&gt;&lt;/blockquote&gt;
-&lt;hr
+&lt;hr&gt;
+&lt;im
         
       
     
     </summary>
     
+    
+      <category term="Anime" scheme="https://trisolaris233.github.io/categories/Anime/"/>
     
     
       <category term="anime" scheme="https://trisolaris233.github.io/tags/anime/"/>
@@ -122,7 +159,7 @@
     <link href="https://trisolaris233.github.io/posts/994/"/>
     <id>https://trisolaris233.github.io/posts/994/</id>
     <published>2020-02-13T01:20:19.000Z</published>
-    <updated>2020-03-17T13:52:09.511Z</updated>
+    <updated>2020-03-17T15:53:54.456Z</updated>
     
     <summary type="html">
     
@@ -138,42 +175,19 @@
     </summary>
     
     
+      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
+    
     
       <category term="Windows" scheme="https://trisolaris233.github.io/tags/Windows/"/>
     
   </entry>
   
   <entry>
-    <title>重拾我这长草的博客，简单说下最近</title>
-    <link href="https://trisolaris233.github.io/posts/19596/"/>
-    <id>https://trisolaris233.github.io/posts/19596/</id>
-    <published>2020-02-08T11:40:18.000Z</published>
-    <updated>2020-03-17T13:52:09.441Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;距离上次写文章几乎差不多是一年之前的事情了，然而我最近才记起来我还有一个博客！虽然没有添加评论系统，是因为私以为写博客这件事情在于总结自己，而不是在于别人如何看待，所以认为博客之类，用Github Page就足够了。而且用Hexo+Github
-        
-      
-    
-    </summary>
-    
-    
-      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>【以渔授】在9102年编译boost</title>
+    <title>编译boost的正确方法</title>
     <link href="https://trisolaris233.github.io/posts/46203/"/>
     <id>https://trisolaris233.github.io/posts/46203/</id>
     <published>2019-02-11T17:19:39.000Z</published>
-    <updated>2020-03-17T13:52:09.517Z</updated>
+    <updated>2020-03-17T15:50:25.279Z</updated>
     
     <summary type="html">
     
@@ -188,6 +202,8 @@
     </summary>
     
     
+      <category term="Coding" scheme="https://trisolaris233.github.io/categories/Coding/"/>
+    
     
       <category term="boost" scheme="https://trisolaris233.github.io/tags/boost/"/>
     
@@ -200,7 +216,7 @@
     <link href="https://trisolaris233.github.io/posts/19517/"/>
     <id>https://trisolaris233.github.io/posts/19517/</id>
     <published>2019-02-10T14:20:32.000Z</published>
-    <updated>2020-03-17T13:52:09.610Z</updated>
+    <updated>2020-03-17T15:53:05.123Z</updated>
     
     <summary type="html">
     
@@ -216,6 +232,8 @@
     </summary>
     
     
+      <category term="Coding" scheme="https://trisolaris233.github.io/categories/Coding/"/>
+    
     
       <category term="vscode" scheme="https://trisolaris233.github.io/tags/vscode/"/>
     
@@ -230,7 +248,7 @@
     <link href="https://trisolaris233.github.io/posts/20852/"/>
     <id>https://trisolaris233.github.io/posts/20852/</id>
     <published>2019-02-02T05:42:48.000Z</published>
-    <updated>2020-03-17T13:52:09.483Z</updated>
+    <updated>2020-03-17T15:52:52.810Z</updated>
     
     <summary type="html">
     
@@ -246,6 +264,8 @@
     </summary>
     
     
+      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
+    
     
       <category term="makefile" scheme="https://trisolaris233.github.io/tags/makefile/"/>
     
@@ -256,7 +276,7 @@
     <link href="https://trisolaris233.github.io/posts/27435/"/>
     <id>https://trisolaris233.github.io/posts/27435/</id>
     <published>2019-01-26T17:48:41.000Z</published>
-    <updated>2020-03-17T13:52:09.529Z</updated>
+    <updated>2020-03-17T15:52:05.286Z</updated>
     
     <summary type="html">
     
@@ -271,6 +291,8 @@
     </summary>
     
     
+      <category term="Blogging" scheme="https://trisolaris233.github.io/categories/Blogging/"/>
+    
     
       <category term="hexo" scheme="https://trisolaris233.github.io/tags/hexo/"/>
     
@@ -279,40 +301,11 @@
   </entry>
   
   <entry>
-    <title>《菊与刀》读后感</title>
-    <link href="https://trisolaris233.github.io/posts/25822/"/>
-    <id>https://trisolaris233.github.io/posts/25822/</id>
-    <published>2019-01-19T16:00:00.000Z</published>
-    <updated>2020-03-17T13:52:09.634Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;《菊与刀》是一本人类学著作， 研究的对象是二战时期的日本人。此书被广泛流传， 并被许多人推荐为了解日本的入门作品。 事实上， 这本书也是我见过出版版本最多的书——某宝上一搜，可以看到不下十个版本， 这就是此书十分热门流行的一种表现。 很多版本的《菊与刀》封面华丽，
-        
-      
-    
-    </summary>
-    
-    
-      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
-    
-    
-      <category term="菊与刀" scheme="https://trisolaris233.github.io/tags/%E8%8F%8A%E4%B8%8E%E5%88%80/"/>
-    
-      <category term="读后感" scheme="https://trisolaris233.github.io/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>GFW之我见</title>
     <link href="https://trisolaris233.github.io/posts/46566/"/>
     <id>https://trisolaris233.github.io/posts/46566/</id>
     <published>2018-12-31T16:00:00.000Z</published>
-    <updated>2020-03-17T13:52:09.599Z</updated>
+    <updated>2020-03-17T15:40:50.511Z</updated>
     
     <summary type="html">
     
@@ -333,12 +326,6 @@
     
       <category term="GFW" scheme="https://trisolaris233.github.io/tags/GFW/"/>
     
-      <category term="功夫网" scheme="https://trisolaris233.github.io/tags/%E5%8A%9F%E5%A4%AB%E7%BD%91/"/>
-    
-      <category term="防火长城" scheme="https://trisolaris233.github.io/tags/%E9%98%B2%E7%81%AB%E9%95%BF%E5%9F%8E/"/>
-    
-      <category term="墙" scheme="https://trisolaris233.github.io/tags/%E5%A2%99/"/>
-    
   </entry>
   
   <entry>
@@ -346,7 +333,7 @@
     <link href="https://trisolaris233.github.io/posts/9081/"/>
     <id>https://trisolaris233.github.io/posts/9081/</id>
     <published>2018-12-04T16:00:00.000Z</published>
-    <updated>2020-03-17T13:52:09.623Z</updated>
+    <updated>2020-03-17T15:53:13.618Z</updated>
     
     <summary type="html">
     
@@ -360,6 +347,8 @@
     
     </summary>
     
+    
+      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
     
     
       <category term="随笔" scheme="https://trisolaris233.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
@@ -373,7 +362,7 @@
     <link href="https://trisolaris233.github.io/posts/3874/"/>
     <id>https://trisolaris233.github.io/posts/3874/</id>
     <published>2018-11-01T16:00:00.000Z</published>
-    <updated>2020-03-17T13:52:09.645Z</updated>
+    <updated>2020-03-17T15:41:24.846Z</updated>
     
     <summary type="html">
     
@@ -388,10 +377,14 @@
     </summary>
     
     
+      <category term="杂说" scheme="https://trisolaris233.github.io/categories/%E6%9D%82%E8%AF%B4/"/>
+    
     
       <category term="随笔" scheme="https://trisolaris233.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
-      <category term="旧作" scheme="https://trisolaris233.github.io/tags/%E6%97%A7%E4%BD%9C/"/>
+      <category term="金庸" scheme="https://trisolaris233.github.io/tags/%E9%87%91%E5%BA%B8/"/>
+    
+      <category term="武侠小说" scheme="https://trisolaris233.github.io/tags/%E6%AD%A6%E4%BE%A0%E5%B0%8F%E8%AF%B4/"/>
     
   </entry>
   

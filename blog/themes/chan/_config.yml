@@ -1,0 +1,89 @@
+# chan theme configuration
+
+# site setting
+rss: /atom.xml
+favicon: /favicon.png
+
+# style setting
+monochrome: false
+
+# view setting
+avatar: https://cn.gravatar.com/avatar/a2403d984f652c52137c0c3402d83185?s=200
+avatarLink: /about
+maxContentWidth: 1000px # set the main content column's max-width property. keep it blank to unlimited the width
+copyright: # the copyright text in the footer, could be richtext
+
+# sidebar navigator structure
+# It's a list with item that is also list.
+# The item of first level list means a group of links,
+# and the item of the second level list means exactly a link.
+# A link item is an object whit two properties: 'name' for displaying and 'link' for redirecting.
+# A link starts with http/https would be rendered as a tag with 'target="_blank"' .
+# There are also some special link items representing in string: 'categories', 'tags' and 'archives'
+nav:
+  -
+    -
+      name: Home
+      url: '/'
+
+  -
+    - archives   # display a collapsible archive list
+    - categories # display a collapsible category list
+    - tags       # display a collapsible tag list
+    
+  -
+    -
+      name: Github
+      url: https://github.com/trisolaris233
+    -
+      name: RSS
+      url: /atom.xml
+
+# duoshuo shortname
+# refer to http://duoshuo.com
+# If you use disqus then you should set disqus_shortname in your site config and disable duoshuo here.
+# You also need to set 'comments' to true in the front-matter
+#duoshuo: sprabbit
+
+# jiathis share id
+# refer to http://jiathis.com
+#jiathis: 1589291
+
+# open graph
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+# analytics ids
+google_analytics:
+baidu_statistics:
+
+# default creative commons
+# There are 6 kinds of combination and place 'none' to disable.
+# - by
+# - by-sa
+# - by-nd
+# - by-nc
+# - by-nc-sa
+# - by-nc-nd
+# - none
+# This setting could be overwritten in the front matter of a post.
+# More details in https://creativecommons.org
+cc: by-sa
+
+# FancyBox / PhotoSwipe
+# Although it is called fancybox, we use PhotoSwipe instead.
+# Check http://photoswipe.com
+fancybox: true    # enable fancybox/photoswipe rendering
+# photoswipe: true  # the same
+
+
+#gitalk settings
+gitalk:
+  enable: true #用来做启用判断可以不用
+  owner: trisolaris233
+  repo: BlogCommentsRepo
+  admin: trisolaris233
+  clientID: 1e120b7c658fe12ea9f7
+  clientSecret: 09676067964443ebe8a6350e04bb843514caa18e

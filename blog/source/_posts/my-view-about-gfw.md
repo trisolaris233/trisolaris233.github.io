@@ -1,14 +1,15 @@
 ---
 title: GFW之我见
 tags:
-- GFW
-- 功夫网
-- 防火长城
-- 墙
+  - GFW
+  - 功夫网
+  - 防火长城
+  - 墙
 categories:
-- 杂说
+  - 杂说
 date: 2019/1/1
 desc: 评价GFW
+abbrlink: 46566
 ---
 
 ## 目录

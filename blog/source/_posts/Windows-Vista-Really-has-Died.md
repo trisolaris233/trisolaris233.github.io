@@ -1,8 +1,9 @@
 ---
 title: Windows Vista Has Really Died
-date: 2020-02-13 09:20:19
 tags:
-- Windows
+  - Windows
+abbrlink: 994
+date: 2020-02-13 09:20:19
 ---
 
 

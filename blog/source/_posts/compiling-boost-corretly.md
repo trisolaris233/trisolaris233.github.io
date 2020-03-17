@@ -1,9 +1,10 @@
 ---
 title: 【以渔授】在9102年编译boost
-date: 2019-02-12 01:19:39
 tags:
-- boost
-- C++
+  - boost
+  - C++
+abbrlink: 46203
+date: 2019-02-12 01:19:39
 ---
 
 提到[boost](https://www.boost.org)，大家都不会陌生，这篇文章简要的聊一聊boost的编译。

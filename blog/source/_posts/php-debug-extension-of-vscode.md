@@ -1,10 +1,11 @@
 ---
 title: linux下vscode中的php debug插件
-date: 2019-02-10 22:20:32
 tags:
-- vscode
-- php
-- linux
+  - vscode
+  - php
+  - linux
+abbrlink: 19517
+date: 2019-02-10 22:20:32
 ---
 
 `vscode`的`php debug`插件简直是巨坑！

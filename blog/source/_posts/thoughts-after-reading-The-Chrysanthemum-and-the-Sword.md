@@ -1,10 +1,7 @@
 ---
 title: 《菊与刀》读后感
 tags:
-  - 菊与刀
   - 读后感
-categories:
-  - 杂说
 date: 2019/1/20
 abbrlink: 25822
 categories:

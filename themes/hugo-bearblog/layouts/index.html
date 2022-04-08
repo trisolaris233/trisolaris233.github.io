@@ -1,0 +1,68 @@
+{{ define "main" }}
+<content>
+  {{ if .Data.Singular }}
+  <h3 style="margin-bottom:0">Filtering for "{{ .Title }}"</h3>
+  <small>
+    <a href="{{ "/blog" | relURL }}">Remove filter</a>
+  </small>
+  {{ end }}
+  <ul class="blog-posts">
+    {{ range .Pages }}
+    <li>
+      
+          {{ $f := .File }}
+          <span>
+            <i>
+          {{ if .IsSection }}
+              {{ $dirname := substr $f.Dir 0 (sub (len $f.Dir) 1)}}
+              <span>
+                <i>
+                    {{ $num_of_pages := len (where .Site.Pages "Section" "==" $dirname) }}
+                    {{ if gt $num_of_pages 0 }}
+                      {{ sub (len (where .Site.Pages "Section" "==" $dirname)) 1 }}
+                    {{ else }}
+                      0
+                    {{ end }}
+                  
+                </i>
+              </span>
+              <span>drwxr-xr-x</span>
+          {{ else }}
+              <span>-rw-r--r-</span>
+          {{ end }}
+            </i>
+          </span>
+          
+      </span>
+      <span>
+        <i>
+        <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+          {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+        </time>
+      </i>
+    </span>
+      {{ if eq $f.LogicalName "_index.md"}}
+        <b><i><a href="{{ .Permalink }}">{{ .Title }}</a></i></b>
+        {{ else }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+      
+    </li>
+    {{ else }}
+    <li>
+      No posts yet
+    </li>
+    {{ end }}
+  </ul>
+  {{ if .Data.Singular }}
+  {{else}}
+    <small>
+      <div>
+        {{ range .Site.Taxonomies.tags }}
+        <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
+        {{ end }}
+      </div>
+    </small>
+    {{ end }}
+</content>
+{{ end }}

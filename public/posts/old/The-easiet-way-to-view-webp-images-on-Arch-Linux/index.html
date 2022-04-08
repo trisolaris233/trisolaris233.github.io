@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://s2.loli.net/2022/04/08/oHUjIYRyi3T918K.png" />
+<title>The easiet way to view webp images on Arch Linux | SunshinePlusIce</title>
+<meta name="title" content="The easiet way to view webp images on Arch Linux" />
+<meta name="description" content="Yesterday&hellip; Or just early today, I was just looking for some pictures about Misaki Mei, Ano kawaii girl that I came up with at a moment, she was from an anime which cames from a light novel together with a manga. It&rsquo;s funny that the three edition has quite a different stories. I had only watched the anime during last summer, the picnic anime faded with so cute a girl involved." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="The easiet way to view webp images on Arch Linux" />
+<meta property="og:description" content="Yesterday&hellip; Or just early today, I was just looking for some pictures about Misaki Mei, Ano kawaii girl that I came up with at a moment, she was from an anime which cames from a light novel together with a manga. It&rsquo;s funny that the three edition has quite a different stories. I had only watched the anime during last summer, the picnic anime faded with so cute a girl involved." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://trisolaris233.github.io/posts/old/the-easiet-way-to-view-webp-images-on-arch-linux/" /><meta property="og:image" content="https://trisolaris233.github.io/images/share.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-08T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-04-08T00:00:00&#43;00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://trisolaris233.github.io/images/share.png"/>
+
+<meta name="twitter:title" content="The easiet way to view webp images on Arch Linux"/>
+<meta name="twitter:description" content="Yesterday&hellip; Or just early today, I was just looking for some pictures about Misaki Mei, Ano kawaii girl that I came up with at a moment, she was from an anime which cames from a light novel together with a manga. It&rsquo;s funny that the three edition has quite a different stories. I had only watched the anime during last summer, the picnic anime faded with so cute a girl involved."/>
+
+
+
+<meta itemprop="name" content="The easiet way to view webp images on Arch Linux">
+<meta itemprop="description" content="Yesterday&hellip; Or just early today, I was just looking for some pictures about Misaki Mei, Ano kawaii girl that I came up with at a moment, she was from an anime which cames from a light novel together with a manga. It&rsquo;s funny that the three edition has quite a different stories. I had only watched the anime during last summer, the picnic anime faded with so cute a girl involved."><meta itemprop="datePublished" content="2020-04-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="491"><meta itemprop="image" content="https://trisolaris233.github.io/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li h3 span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+
+</style>
+
+</head>
+
+<body>
+  <header><h3>
+<ul class="blog-posts">
+  <li>
+    
+  
+    
+    <u><a href="https://trisolaris233.github.io/posts/old/the-easiet-way-to-view-webp-images-on-arch-linux/">/posts/old/The-easiet-way-to-view-webp-images-on-Arch-Linux.md</a></u>
+    
+    
+  
+  
+  </li>
+</ul>
+</h3>
+  
+<nav>
+<a href="javascript: history.back()">Back</a>
+
+
+<a href="/">Home</a>
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <h1>The easiet way to view webp images on Arch Linux</h1>
+  <p>Yesterday&hellip; Or just early today, I was just looking for some pictures about Misaki Mei, Ano kawaii girl that I came up with at a moment, she was from an anime which cames from a light novel together with a manga. It&rsquo;s funny that the three edition has quite a different stories. I had only watched the anime during last summer, the picnic anime faded with so cute a girl involved. Who TM would be scared?</p>
+<p>{% asset_img misaki_mei.jpg %}</p>
+<p>That was the case I found some .webp images.</p>
+<p>And I found the <code>Gwenview</code>, my KDE Plasma default image viewer, I love it pretty much, but it did not support to view webp image files.</p>
+<p>Then I go to google for help, and I ended up finding a pile of like Top n Best Programs to view webp files on Linux, at this time, the google was not better than Baidu as before it used to. Then I used the gThumb.</p>
+<p>But gThumb was a mother-fucker program, I did not like it. For I am convinced that <code>GwenView NB</code>.So I was eager to find alternative way to solve the simple requirement of viewing webp images.</p>
+<p>Luckily, I fond <code>vwebp</code>, I loved this name because <code>IT IS CLEAR</code>. You can easily download vwebp from <a href="https://developers.google.com/speed/webp/download">google&rsquo;s website</a>(ps: You should search with keyword webp rather than vwebp, which would only give you shit)</p>
+<p>You just simply downloaded it and extracted it. the directory will look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zytc@etc:Downloads/libwebp-1.0.3-linux-x86-64 $ ll  
+total 52K
+drwxr-xr-x <span style="color:#ae81ff">2</span> zytc zytc 4.0K Jul  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2019</span> bin
+drwxr-xr-x <span style="color:#ae81ff">2</span> zytc zytc 4.0K Jul  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2019</span> doc
+drwxr-xr-x <span style="color:#ae81ff">3</span> zytc zytc 4.0K Jul  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2019</span> include
+drwxr-xr-x <span style="color:#ae81ff">2</span> zytc zytc 4.0K Jul  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2019</span> lib
+-rw-r--r-- <span style="color:#ae81ff">1</span> zytc zytc  24K Jul  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2019</span> README
+-rw-r--r-- <span style="color:#ae81ff">1</span> zytc zytc 8.8K Jul  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2019</span> README.mux
+</code></pre></div><p>and the executable binary is in the directory <code>bin</code>, what you need to do is simply create a symbolic link to the <code>vwebp</code> binary to one of your <code>$PATH </code>directory, generally <code>/usr/bin</code>, as below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zytc@etc:~$ ln -s bin/vwebp /usr/bin/webp
+</code></pre></div><p>and it would do what you want. However, I created and try to run the command it crashed with an error.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zytc@etc:Downloads/libwebp-1.0.3-linux-x86-64 $ vwebp --version
+vwebp: error <span style="color:#66d9ef">while</span> loading shared libraries: libglut.so.3: cannot open shared object file: No such file or directory
+</code></pre></div><p>it seemed a f**king library is needed for vwebp to run properly. In fact, our system lacked of <code>glut</code>, which provides several openGL operations, you can install with <code>yay -S glut</code> and select the <code>freeglut</code> to install it. After all the stuff get over, it just got its way. then input</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zytc@etc:~$ vwebp ~/gallery/Misaki_mei/ &amp;
+zytc@etc:~$ sudo pacman -Rs gthumb-lite
+</code></pre></div><p>{% asset_img screenshot.png %}</p>
+<p><strong>Ohhhhhhhhhhhhhhhhhhhhhhh</strong>, F**k, kanojo wa so cute!!!!!(●´∀`●)</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>so the easies way to view webp images on arch linux is</p>
+<ul>
+<li>Download the webp tools from google, as above</li>
+<li>Install glut</li>
+<li>Create symbolic links or other ways you can get <code>vwebp</code> work.</li>
+<li><del>UNINSTALL GTHUMB</del></li>
+</ul>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

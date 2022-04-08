@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://s2.loli.net/2022/04/08/oHUjIYRyi3T918K.png" />
+<title>linux下vscode中的php debug插件 | SunshinePlusIce</title>
+<meta name="title" content="linux下vscode中的php debug插件" />
+<meta name="description" content="vscode的php debug插件简直是巨坑！
+从昨天晚上开始一直整这个插件，中途几经放弃， 现在终于可以使用了(太感动了).. 主要原因可以归结为: 对linux不熟悉太菜。
+而且关于这个插件百度上的资料真的很少，大多都是蜻蜓点水，让人看了一头雾水不知所云。 我这次整好后更坚定了一个信念： 具体问题具体分析。有时候网上找的内容不一定符合你的实际情况， 如果生搬硬套结果肯定是自找苦吃， 所以我希望遇到问题先问why?，为什么会出现这个问题？ 仔细的考虑过这个问题后， 对问题的解决是非常有帮助的。
+Php Debug介绍 说穿了就是可以调试php代码的插件， 最好的介绍和安装方法就是官方说明： {% asset_img php-debug-info.png %}
+Php Debug的原理 来一波倒叙，首先先介绍原理，这样可能会更容易理解一点，尤其是读完文章后再回头来看原理，其实还蛮好理解的！(就是支流问题特别多，linux上整需要一定的姿势水平，还是要学习一个)
+首先， 你应该会在vscode里面打了几个断点然后启动debug吧， 这时候其实启动了xdebug的程序，这个程序按照默认配置会监听127.0.0.1:9000，他等待的是php的连接(我一开始就在浏览器中访问localhost:9000，结果啥也没发生，请求多了还会导致连接关闭)。 假设你的服务器的DocumentRoot设在~/www下。你正在vscode中调试的文件是~/www/test/index.php，这时候你在浏览器进入localhost/test/index.php，如果正确配置应该会使浏览器唤起fastcgi,php-fpm等进程工作并且最后执行php源代码的解析。解析时php会发现自己设置了debug选项(因为我们已经在php.ini文件中设置好了)，按照默认，就回去连接正在监听中的xdebug进程。 这样就完成了对接，于是debug就开始了。
+debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebug原理图解》 {% asset_img xdebug-process.png %} (好久没用processOn，我发现这玩意儿真是好用！！(之前尝试用gimp画图的 - -)
+好了，我要怎么安装呢？ 事实上， 对于上面的介绍有一点非常让我疑惑不解，就是这句话：XDebug is a PHP extension (a .so file on Linux and a .dll on Windows) that needs to be installed on your server.，这句话意思说xdebug不仅要为php安装还要为服务器安装，然而我自己编译的apache2.4编译时并未选择什么xdebug，之后也从未折腾(配置好php解析后)， 所以一直很疑惑。
+后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。" />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="linux下vscode中的php debug插件" />
+<meta property="og:description" content="vscode的php debug插件简直是巨坑！
+从昨天晚上开始一直整这个插件，中途几经放弃， 现在终于可以使用了(太感动了).. 主要原因可以归结为: 对linux不熟悉太菜。
+而且关于这个插件百度上的资料真的很少，大多都是蜻蜓点水，让人看了一头雾水不知所云。 我这次整好后更坚定了一个信念： 具体问题具体分析。有时候网上找的内容不一定符合你的实际情况， 如果生搬硬套结果肯定是自找苦吃， 所以我希望遇到问题先问why?，为什么会出现这个问题？ 仔细的考虑过这个问题后， 对问题的解决是非常有帮助的。
+Php Debug介绍 说穿了就是可以调试php代码的插件， 最好的介绍和安装方法就是官方说明： {% asset_img php-debug-info.png %}
+Php Debug的原理 来一波倒叙，首先先介绍原理，这样可能会更容易理解一点，尤其是读完文章后再回头来看原理，其实还蛮好理解的！(就是支流问题特别多，linux上整需要一定的姿势水平，还是要学习一个)
+首先， 你应该会在vscode里面打了几个断点然后启动debug吧， 这时候其实启动了xdebug的程序，这个程序按照默认配置会监听127.0.0.1:9000，他等待的是php的连接(我一开始就在浏览器中访问localhost:9000，结果啥也没发生，请求多了还会导致连接关闭)。 假设你的服务器的DocumentRoot设在~/www下。你正在vscode中调试的文件是~/www/test/index.php，这时候你在浏览器进入localhost/test/index.php，如果正确配置应该会使浏览器唤起fastcgi,php-fpm等进程工作并且最后执行php源代码的解析。解析时php会发现自己设置了debug选项(因为我们已经在php.ini文件中设置好了)，按照默认，就回去连接正在监听中的xdebug进程。 这样就完成了对接，于是debug就开始了。
+debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebug原理图解》 {% asset_img xdebug-process.png %} (好久没用processOn，我发现这玩意儿真是好用！！(之前尝试用gimp画图的 - -)
+好了，我要怎么安装呢？ 事实上， 对于上面的介绍有一点非常让我疑惑不解，就是这句话：XDebug is a PHP extension (a .so file on Linux and a .dll on Windows) that needs to be installed on your server.，这句话意思说xdebug不仅要为php安装还要为服务器安装，然而我自己编译的apache2.4编译时并未选择什么xdebug，之后也从未折腾(配置好php解析后)， 所以一直很疑惑。
+后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://trisolaris233.github.io/posts/old/php-debug-extension-of-vscode/" /><meta property="og:image" content="https://trisolaris233.github.io/images/share.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-02-10T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-02-10T00:00:00&#43;00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://trisolaris233.github.io/images/share.png"/>
+
+<meta name="twitter:title" content="linux下vscode中的php debug插件"/>
+<meta name="twitter:description" content="vscode的php debug插件简直是巨坑！
+从昨天晚上开始一直整这个插件，中途几经放弃， 现在终于可以使用了(太感动了).. 主要原因可以归结为: 对linux不熟悉太菜。
+而且关于这个插件百度上的资料真的很少，大多都是蜻蜓点水，让人看了一头雾水不知所云。 我这次整好后更坚定了一个信念： 具体问题具体分析。有时候网上找的内容不一定符合你的实际情况， 如果生搬硬套结果肯定是自找苦吃， 所以我希望遇到问题先问why?，为什么会出现这个问题？ 仔细的考虑过这个问题后， 对问题的解决是非常有帮助的。
+Php Debug介绍 说穿了就是可以调试php代码的插件， 最好的介绍和安装方法就是官方说明： {% asset_img php-debug-info.png %}
+Php Debug的原理 来一波倒叙，首先先介绍原理，这样可能会更容易理解一点，尤其是读完文章后再回头来看原理，其实还蛮好理解的！(就是支流问题特别多，linux上整需要一定的姿势水平，还是要学习一个)
+首先， 你应该会在vscode里面打了几个断点然后启动debug吧， 这时候其实启动了xdebug的程序，这个程序按照默认配置会监听127.0.0.1:9000，他等待的是php的连接(我一开始就在浏览器中访问localhost:9000，结果啥也没发生，请求多了还会导致连接关闭)。 假设你的服务器的DocumentRoot设在~/www下。你正在vscode中调试的文件是~/www/test/index.php，这时候你在浏览器进入localhost/test/index.php，如果正确配置应该会使浏览器唤起fastcgi,php-fpm等进程工作并且最后执行php源代码的解析。解析时php会发现自己设置了debug选项(因为我们已经在php.ini文件中设置好了)，按照默认，就回去连接正在监听中的xdebug进程。 这样就完成了对接，于是debug就开始了。
+debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebug原理图解》 {% asset_img xdebug-process.png %} (好久没用processOn，我发现这玩意儿真是好用！！(之前尝试用gimp画图的 - -)
+好了，我要怎么安装呢？ 事实上， 对于上面的介绍有一点非常让我疑惑不解，就是这句话：XDebug is a PHP extension (a .so file on Linux and a .dll on Windows) that needs to be installed on your server.，这句话意思说xdebug不仅要为php安装还要为服务器安装，然而我自己编译的apache2.4编译时并未选择什么xdebug，之后也从未折腾(配置好php解析后)， 所以一直很疑惑。
+后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。"/>
+
+
+
+<meta itemprop="name" content="linux下vscode中的php debug插件">
+<meta itemprop="description" content="vscode的php debug插件简直是巨坑！
+从昨天晚上开始一直整这个插件，中途几经放弃， 现在终于可以使用了(太感动了).. 主要原因可以归结为: 对linux不熟悉太菜。
+而且关于这个插件百度上的资料真的很少，大多都是蜻蜓点水，让人看了一头雾水不知所云。 我这次整好后更坚定了一个信念： 具体问题具体分析。有时候网上找的内容不一定符合你的实际情况， 如果生搬硬套结果肯定是自找苦吃， 所以我希望遇到问题先问why?，为什么会出现这个问题？ 仔细的考虑过这个问题后， 对问题的解决是非常有帮助的。
+Php Debug介绍 说穿了就是可以调试php代码的插件， 最好的介绍和安装方法就是官方说明： {% asset_img php-debug-info.png %}
+Php Debug的原理 来一波倒叙，首先先介绍原理，这样可能会更容易理解一点，尤其是读完文章后再回头来看原理，其实还蛮好理解的！(就是支流问题特别多，linux上整需要一定的姿势水平，还是要学习一个)
+首先， 你应该会在vscode里面打了几个断点然后启动debug吧， 这时候其实启动了xdebug的程序，这个程序按照默认配置会监听127.0.0.1:9000，他等待的是php的连接(我一开始就在浏览器中访问localhost:9000，结果啥也没发生，请求多了还会导致连接关闭)。 假设你的服务器的DocumentRoot设在~/www下。你正在vscode中调试的文件是~/www/test/index.php，这时候你在浏览器进入localhost/test/index.php，如果正确配置应该会使浏览器唤起fastcgi,php-fpm等进程工作并且最后执行php源代码的解析。解析时php会发现自己设置了debug选项(因为我们已经在php.ini文件中设置好了)，按照默认，就回去连接正在监听中的xdebug进程。 这样就完成了对接，于是debug就开始了。
+debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebug原理图解》 {% asset_img xdebug-process.png %} (好久没用processOn，我发现这玩意儿真是好用！！(之前尝试用gimp画图的 - -)
+好了，我要怎么安装呢？ 事实上， 对于上面的介绍有一点非常让我疑惑不解，就是这句话：XDebug is a PHP extension (a .so file on Linux and a .dll on Windows) that needs to be installed on your server.，这句话意思说xdebug不仅要为php安装还要为服务器安装，然而我自己编译的apache2.4编译时并未选择什么xdebug，之后也从未折腾(配置好php解析后)， 所以一直很疑惑。
+后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。"><meta itemprop="datePublished" content="2019-02-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-02-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="142"><meta itemprop="image" content="https://trisolaris233.github.io/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li h3 span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+
+</style>
+
+</head>
+
+<body>
+  <header><h3>
+<ul class="blog-posts">
+  <li>
+    
+  
+    
+    <u><a href="https://trisolaris233.github.io/posts/old/php-debug-extension-of-vscode/">/posts/old/php-debug-extension-of-vscode.md</a></u>
+    
+    
+  
+  
+  </li>
+</ul>
+</h3>
+  
+<nav>
+<a href="javascript: history.back()">Back</a>
+
+
+<a href="/">Home</a>
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <h1>linux下vscode中的php debug插件</h1>
+  <p><code>vscode</code>的<code>php debug</code>插件简直是巨坑！</p>
+<p>从昨天晚上开始一直整这个插件，中途几经放弃， 现在终于可以使用了(<del>太感动了</del>).. 主要原因可以归结为: <del>对<code>linux</code>不熟悉</del><strong>太菜</strong>。</p>
+<p>而且关于这个插件百度上的资料真的很少，大多都是蜻蜓点水，让人看了一头雾水不知所云。 我这次整好后更坚定了一个信念： <strong>具体问题具体分析</strong>。有时候网上找的内容不一定符合你的实际情况， 如果生搬硬套结果肯定是自找苦吃， 所以我希望遇到问题先问<code>why?</code>，为什么会出现这个问题？ 仔细的考虑过这个问题后， 对问题的解决是非常有帮助的。</p>
+<h2 id="php-debug介绍">Php Debug介绍</h2>
+<p>说穿了就是可以调试php代码的插件， 最好的介绍和安装方法就是官方说明：
+{% asset_img php-debug-info.png %}</p>
+<h2 id="php-debug的原理">Php Debug的原理</h2>
+<p>来一波倒叙，首先先介绍原理，这样可能会更容易理解一点，尤其是读完文章后再回头来看原理，其实还蛮好理解的！(就是支流问题特别多，linux上整需要一定的姿势水平，还是要学习一个)</p>
+<p>首先， 你应该会在vscode里面打了几个断点然后启动debug吧， 这时候其实启动了<code>xdebug</code>的程序，这个程序按照默认配置会监听<code>127.0.0.1:9000</code>，他等待的是<strong>php的连接</strong>(我一开始就在浏览器中访问<code>localhost:9000</code>，结果啥也没发生，请求多了还会导致连接关闭)。
+假设你的服务器的<code>DocumentRoot</code>设在<code>~/www</code>下。你正在vscode中调试的文件是<code>~/www/test/index.php</code>，这时候你在浏览器进入<code>localhost/test/index.php</code>，如果正确配置应该会使浏览器唤起<code>fastcgi</code>,<code>php-fpm</code>等进程工作并且最后执行php源代码的解析。解析时php会发现自己设置了<code>debug</code>选项(因为我们已经在<code>php.ini</code>文件中设置好了)，按照默认，就回去连接正在监听中的<code>xdebug</code>进程。 这样就完成了对接，于是<code>debug</code>就开始了。</p>
+<h3 id="debug过程图解">debug过程图解</h3>
+<p>平时都不画UML图的说&hellip; 这回来了一张《xdebug原理图解》
+{%  asset_img  xdebug-process.png %}
+(好久没用<a href="https://www.processon.com">processOn</a>，我发现这玩意儿真是好用！！<del>(之前尝试用gimp画图的 - -)</del></p>
+<h3 id="好了我要怎么安装呢">好了，我要怎么安装呢？</h3>
+<p>事实上， 对于上面的介绍有一点非常让我疑惑不解，就是这句话：<code>XDebug is a PHP extension (a .so file on Linux and a .dll on Windows) that needs to be installed on your server.</code>，这句话意思说<code>xdebug</code>不仅要为php安装还要为服务器安装，然而我自己编译的<code>apache2.4</code>编译时并未选择什么<code>xdebug</code>，之后也从未折腾(配置好php解析后)， 所以一直很疑惑。</p>
+<p>后来， 我look up了<code>xdebug</code>的<a href="https://xdebug.org/docs/all">官方文档</a>，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。</p>
+<p>{% blockquote %}
+根据我的经历来判断成功安装并且使用<code>php debug</code>的前提是先要有一个服务器， 我用的是<code>apache2.4</code>，想来<code>nginx</code>也应该是可以的。 还有就是一个正确安装的php， 版本在<code>7.0</code>-<code>7.4</code>之间为上。
+{% endblockquote %}</p>
+<p>插件官方说明云，我们应该先安装<code>XDebug</code>这个东西， 并进入后面提示的这个<a href="https://xdebug.org/wizard.php">XDebug installation wizard</a>， 按照他的提示，我们把<code>phpinfo()</code>(等同于<code>php -i</code>的输出)复制到该网页上去， 网页会检测我们是否安装了<code>XDebug</code>并提供了一个友好的安装向导:
+{% asset_img install-xdebug.png %}
+按照上面的指示， 我们可以轻松的为php安装上<code>xdebug</code>。</p>
+<p>{% blockquote %}
+中间可能会出现的问题：执行<code>./configure</code>提示需要<code>php-config</code>的路径， 这个问题我也遇到了， 如果你是用包管理器安装的php则不会有这个问题。<code>php-config</code>的路径和<code>php</code>的可执行文件位于同一目录中， 具体取决于你编译时的安装位置。
+{% endblockquote %}</p>
+<p>装上<code>xdebug</code>后， 又回到了插件官方文档， 我们需要在<code>php.ini</code>文件中写入以下内容</p>
+<pre><code>[XDebug]
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
+</code></pre><p>很容易理解， 分别是打开远程debug和自动启动远程debug。</p>
+<p>接下来的挺简单， 打几个断点，然后点击debug， 没有配置就先<code>添加</code>一个！ 然后会生出一个默认的， 按默认使用就可以！ 如果你硬要改<code>php.ini</code>文件中也得相应更改。</p>
+<p>然后是进入浏览器， 进入你正在debug的文件的目录，就可以打中断点！ 当然，这一切都要求服务器设置得当（设置<code>DocumentRoot</code>）。</p>
+<p>{% blockquote %}
+中间遇到的权限不足稳定可以用<code>chmod</code>命令解决，一个http目录路径应该至少具备<code>711</code>的权限。
+{% endblockquote %}</p>
+<h2 id="debug界面和文件">debug界面和文件</h2>
+<p>网上博客都不约而同的旁边开着debug界面&hellip; 这让我很气愤， 因为只要给我看看他们的文件目录说不定就可以给我解决问题的方法！ debug界面只要有打中的断点就足以说明问题了(第四行),这里贴一张效果图。
+{% asset_img  debug-ui-with-file-manager.png %}</p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

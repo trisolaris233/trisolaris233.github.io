@@ -1,0 +1,115 @@
+{{ define "main" }}
+<content>
+  {{ if .Data.Singular }}
+  <h3 style="margin-bottom:0">Filtering for "{{ .Title }}"</h3>
+  <small>
+    <a href="{{ "/blog" | relURL }}">Remove filter</a>
+  </small>
+  {{ end }}
+  {{ if eq .CurrentSection.Title "Old" }}
+    <br>
+     <span> >> 过于羞耻，实在不愿意再放出来。不过你觉得还有没<b tips="/posts/old/*.md">有</b>呢？ << </span>
+  {{ else }}
+  {{ end }}
+  <ul class="blog-posts">
+    {{ range .Pages }}
+    <li>
+      
+          {{ $f := .File }}
+          <span>
+            <i>
+          {{ if .IsSection }}
+              <span>
+                <i>
+                  {{/* 计算section内的文章数量 */}}
+
+                  {{ $count := 0 }}
+                  {{ range .Site.Pages }}
+                      {{ if eq (path.Dir .File.Path) (path.Dir $f.Path) }}
+                        {{ $count = (add $count 1)}}
+                      {{ end }}
+                  {{end}}
+                  
+                  {{/* 输出文章数 */}}
+                  {{/* 如果文章数>0 就减掉_index.md */}}
+                  {{ if gt $count 0 }}
+                    {{ sub $count 1}}
+                  {{ else }}
+                    {{ $count }}
+                  {{ end }}
+
+
+                </i>
+              </span>
+              <span>drwxr-xr-x</span>
+          {{ else }}
+
+
+            {{ if eq .CurrentSection.Title "Old" }}
+              <span>-rw-r--r-@</span>
+            {{ else }}
+              <span>-rw-r--r-</span>
+            {{ end }}
+              
+          {{ end }}
+            </i>
+          </span>
+          
+      </span>
+      <span>
+        <i>
+        <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+          {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+        </time>
+      </i>
+    </span>
+
+       
+
+        {{/* 旧作的小彩蛋 */}}
+
+        {{ if eq .CurrentSection.Title "Old"}}
+
+          {{ if eq $f.LogicalName "_index.md"}}
+            <b><i><a href="{{ .Permalink }}">{{ .Title }}</a></i></b>
+          {{ else }}
+        
+            <a tips="{{ $f.LogicalName }}" href="javascript:0;">{{ .Title }}</a>
+          {{ end }}
+
+        {{ else }}
+          {{ if eq $f.LogicalName "_index.md"}}
+            <b><i><a href="{{ .Permalink }}">{{ .Title }}</a></i></b>
+          {{ else }}
+          
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ end }}
+        {{ end }}
+
+      
+      
+    </li>
+    {{ else }}
+    <li>
+      
+      {{ if eq .CurrentSection.Title "Old" }}
+         [数据丢失]
+      {{ else }}
+          No Posts yet.
+      {{ end }}
+
+    </li>
+    {{ end }}
+  </ul>
+  {{ if .Data.Singular }}
+  {{else}}
+    <small>
+      <div>
+        {{ range .Site.Taxonomies.tags }}
+        <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
+        {{ end }}
+      </div>
+    </small>
+    {{ end }}
+</content>
+{{ end }}

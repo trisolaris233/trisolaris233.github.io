@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://s2.loli.net/2022/04/08/oHUjIYRyi3T918K.png" />
+<title>酷Q猜歌名机器人的开发和Python的初次使用 | SunshinePlusIce</title>
+<meta name="title" content="酷Q猜歌名机器人的开发和Python的初次使用" />
+<meta name="description" content="这些目录我准备有空的时候填上，为自己的学习，成长做记录。 主要是因为之间的问题会重复遇到，做记录就不用看网上铺天盖地的垃圾博客了噢耶
+我对Py的个人看法 我自诩目前对py的看法还停留在非常稚嫩的阶段，概括成两个字就是&quot;不适应&quot;(不要问我为啥是两个字你这个列文虎克)
+最大的原因，当然在于之前用的都是诸如C&#43;&#43;之类的强类型语言，对弱类型语言就有一种强烈的不安的感觉：这玩意儿返回值类型到底是啥啊？
+document matters return exception和不确定的类型 urllib的使用和Url的解析 ffmpeg和pydub sqlite3的使用 SQL全家的故事 自增主键的问题 select last_insert_rowid() 和 sqlite_sequence表 Dump SQLITE到底好不好 猜的问题 匹配程度？剧情版？Cover？ 猜歌词 python-Levenshtein 名字越长越牛逼 py为什么需要vc&#43;&#43;,以及conda " />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="酷Q猜歌名机器人的开发和Python的初次使用" />
+<meta property="og:description" content="这些目录我准备有空的时候填上，为自己的学习，成长做记录。 主要是因为之间的问题会重复遇到，做记录就不用看网上铺天盖地的垃圾博客了噢耶
+我对Py的个人看法 我自诩目前对py的看法还停留在非常稚嫩的阶段，概括成两个字就是&quot;不适应&quot;(不要问我为啥是两个字你这个列文虎克)
+最大的原因，当然在于之前用的都是诸如C&#43;&#43;之类的强类型语言，对弱类型语言就有一种强烈的不安的感觉：这玩意儿返回值类型到底是啥啊？
+document matters return exception和不确定的类型 urllib的使用和Url的解析 ffmpeg和pydub sqlite3的使用 SQL全家的故事 自增主键的问题 select last_insert_rowid() 和 sqlite_sequence表 Dump SQLITE到底好不好 猜的问题 匹配程度？剧情版？Cover？ 猜歌词 python-Levenshtein 名字越长越牛逼 py为什么需要vc&#43;&#43;,以及conda " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://trisolaris233.github.io/posts/old/development-of-guessing-music-qqbot-and-the-usage-of-python/" /><meta property="og:image" content="https://trisolaris233.github.io/images/share.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-22T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-02-22T00:00:00&#43;00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://trisolaris233.github.io/images/share.png"/>
+
+<meta name="twitter:title" content="酷Q猜歌名机器人的开发和Python的初次使用"/>
+<meta name="twitter:description" content="这些目录我准备有空的时候填上，为自己的学习，成长做记录。 主要是因为之间的问题会重复遇到，做记录就不用看网上铺天盖地的垃圾博客了噢耶
+我对Py的个人看法 我自诩目前对py的看法还停留在非常稚嫩的阶段，概括成两个字就是&quot;不适应&quot;(不要问我为啥是两个字你这个列文虎克)
+最大的原因，当然在于之前用的都是诸如C&#43;&#43;之类的强类型语言，对弱类型语言就有一种强烈的不安的感觉：这玩意儿返回值类型到底是啥啊？
+document matters return exception和不确定的类型 urllib的使用和Url的解析 ffmpeg和pydub sqlite3的使用 SQL全家的故事 自增主键的问题 select last_insert_rowid() 和 sqlite_sequence表 Dump SQLITE到底好不好 猜的问题 匹配程度？剧情版？Cover？ 猜歌词 python-Levenshtein 名字越长越牛逼 py为什么需要vc&#43;&#43;,以及conda "/>
+
+
+
+<meta itemprop="name" content="酷Q猜歌名机器人的开发和Python的初次使用">
+<meta itemprop="description" content="这些目录我准备有空的时候填上，为自己的学习，成长做记录。 主要是因为之间的问题会重复遇到，做记录就不用看网上铺天盖地的垃圾博客了噢耶
+我对Py的个人看法 我自诩目前对py的看法还停留在非常稚嫩的阶段，概括成两个字就是&quot;不适应&quot;(不要问我为啥是两个字你这个列文虎克)
+最大的原因，当然在于之前用的都是诸如C&#43;&#43;之类的强类型语言，对弱类型语言就有一种强烈的不安的感觉：这玩意儿返回值类型到底是啥啊？
+document matters return exception和不确定的类型 urllib的使用和Url的解析 ffmpeg和pydub sqlite3的使用 SQL全家的故事 自增主键的问题 select last_insert_rowid() 和 sqlite_sequence表 Dump SQLITE到底好不好 猜的问题 匹配程度？剧情版？Cover？ 猜歌词 python-Levenshtein 名字越长越牛逼 py为什么需要vc&#43;&#43;,以及conda "><meta itemprop="datePublished" content="2020-02-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="26"><meta itemprop="image" content="https://trisolaris233.github.io/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li h3 span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+
+</style>
+
+</head>
+
+<body>
+  <header><h3>
+<ul class="blog-posts">
+  <li>
+    
+  
+    
+    <u><a href="https://trisolaris233.github.io/posts/old/development-of-guessing-music-qqbot-and-the-usage-of-python/">/posts/old/Development-of-Guessing-Music-QQBot-and-the-Usage-of-Python.md</a></u>
+    
+    
+  
+  
+  </li>
+</ul>
+</h3>
+  
+<nav>
+<a href="javascript: history.back()">Back</a>
+
+
+<a href="/">Home</a>
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <h1>酷Q猜歌名机器人的开发和Python的初次使用</h1>
+  <p>这些目录我准备有空的时候填上，为自己的学习，成长做记录。
+主要是因为之间的问题会重复遇到，做记录就不用看网上铺天盖地的垃圾博客了噢耶</p>
+<h2 id="我对py的个人看法">我对Py的个人看法</h2>
+<p>我自诩目前对py的看法还停留在非常稚嫩的阶段，概括成两个字就是&quot;不适应&quot;<del>(不要问我为啥是两个字你这个列文虎克)</del></p>
+<p>最大的原因，当然在于之前用的都是诸如C++之类的强类型语言，对弱类型语言就有一种强烈的不安的感觉：这玩意儿返回值类型到底是啥啊？</p>
+<h3 id="document-matters">document matters</h3>
+<h3 id="return-exception和不确定的类型">return exception和不确定的类型</h3>
+<h2 id="urllib的使用和url的解析">urllib的使用和Url的解析</h2>
+<h2 id="ffmpeg和pydub">ffmpeg和pydub</h2>
+<h2 id="sqlite3的使用">sqlite3的使用</h2>
+<h3 id="sql全家的故事">SQL全家的故事</h3>
+<h3 id="自增主键的问题">自增主键的问题</h3>
+<h4 id="select-last_insert_rowid-和-sqlite_sequence表">select last_insert_rowid() 和 sqlite_sequence表</h4>
+<h3 id="dump">Dump</h3>
+<h3 id="sqlite到底好不好">SQLITE到底好不好</h3>
+<h2 id="猜的问题">猜的问题</h2>
+<h3 id="匹配程度剧情版cover">匹配程度？剧情版？Cover？</h3>
+<h3 id="猜歌词">猜歌词</h3>
+<h3 id="python-levenshtein-名字越长越牛逼">python-Levenshtein 名字越长越牛逼</h3>
+<h2 id="py为什么需要vc以及conda">py为什么需要vc++,以及conda</h2>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

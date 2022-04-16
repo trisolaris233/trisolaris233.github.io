@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://s2.loli.net/2022/04/08/oHUjIYRyi3T918K.png" />
+<title>hexo的备份和多台电脑操作 | SunshinePlusIce</title>
+<meta name="title" content="hexo的备份和多台电脑操作" />
+<meta name="description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
+当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
+备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）" />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="hexo的备份和多台电脑操作" />
+<meta property="og:description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
+当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
+备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://trisolaris233.github.io/posts/old/deploy-hexo-cross-computers/" /><meta property="og:image" content="https://trisolaris233.github.io/images/share.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-01-27T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-01-27T00:00:00&#43;00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://trisolaris233.github.io/images/share.png"/>
+
+<meta name="twitter:title" content="hexo的备份和多台电脑操作"/>
+<meta name="twitter:description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
+当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
+备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）"/>
+
+
+
+<meta itemprop="name" content="hexo的备份和多台电脑操作">
+<meta itemprop="description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
+当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
+备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）"><meta itemprop="datePublished" content="2019-01-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-01-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="130"><meta itemprop="image" content="https://trisolaris233.github.io/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li h3 span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+
+</style>
+
+</head>
+
+<body>
+  <header><h3>
+<ul class="blog-posts">
+  <li>
+    
+  
+    
+    <u><a href="https://trisolaris233.github.io/posts/old/deploy-hexo-cross-computers/">/posts/old/deploy-hexo-cross-computers.md</a></u>
+    
+    
+  
+  
+  </li>
+</ul>
+</h3>
+  
+<nav>
+<a href="javascript: history.back()">Back</a>
+
+
+<a href="/">Home</a>
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <h1>hexo的备份和多台电脑操作</h1>
+  <p>最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。</p>
+<p>当用新电脑的时候除了要安装<code>node.js</code>和<code>npm</code>以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留<code>master</code>分支不受影响（放渲染后的文件供浏览）。</p>
+<h2 id="备份hexo">备份hexo</h2>
+<p>之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个<strong>已经安装好的hexo</strong>：</p>
+<ol>
+<li>在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。</li>
+<li>将博客克隆到本地: <code>git clone https://github.com/trisolaris233/trisolaris233.github.io</code></li>
+<li>此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。</li>
+<li>创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外：
+写入内容:</li>
+</ol>
+<pre><code>.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+</code></pre><ol start="5">
+<li>几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：</li>
+</ol>
+<pre><code class="language-git" data-lang="git">git add .
+git commit -m &quot;hexo environment files.&quot;
+git push origin hexo
+</code></pre><p>以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的<code>master</code>分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。</p>
+<h2 id="换电脑后">换电脑后</h2>
+<p>终于你换了一台电脑，你现在要做的就是在新电脑上安装<code>node.js</code>, <code>npm</code>, <code>git</code>。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行<code>npm install</code>即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）</p>
+<p>{% blockquote %}
+Linux系统下如果出现安装有ERR的情况， 可以检查是否有用<code>sudo npm install</code>， 安装软件包时， sudo是必要的。</p>
+<p>而且需要注意的是：<code>npm</code>的源的设定是对于当前用户的， 也就是说如果执行<code>sudo npm install ...</code>可能会非常慢！ 会出现看似卡着不动的现象。 对于这种可以建议开启<code>--verbose</code>选项，该命令可以查看具体进度，排坑必备。 不过我的建议是对<code>root</code>用户也执行一次换源: <code>sudo npm config set registry https://registry.npm.taobao.org </code></p>
+<p>{% endblockquote %}</p>
+<p><code>npm install -g</code>顺利执行后， 就可以使用hexo了（因为hexo也一并安装了）。</p>
+<p>{% blockquote %}
+#####2020/2/13按:
+这样做的原理和前提是npm的执行目录下有packge.json文件。
+由于之前已经安装过hexo，npm会把安装过的包(也就是hexo)记录到packge.json文件中。
+而在某个目录下执行npm install就是安装当前目录中packge.json文件中记录的包，详情可以参考npm官方文档。</p>
+<p>还有-g，这个g实际上是globally的缩写，如果不加g那么包就只会被装到当前目录下，加上-g就是全局安装，如果不加-g的话会无法使用的。就算在当前目录都不行
+{% endblockquote %}</p>
+<h2 id="多台电脑同时编辑">多台电脑同时编辑</h2>
+<p>有了以上操作之后，多边编辑同一个hexo的博客就不难实现。 每台参与编辑的电脑只要在编辑之前拉取最新的repo即可： <code>git pull</code>， 操作完后， 执行commit。 然后在另一台电脑上也可以执行同样的操作并随时看到更新。</p>
+<h2 id="reference">Reference</h2>
+<p>本文参考了一些网络文章才得以写成， 而且说不定比我写的更加到位, 我很愿意把它们贴出来， 希望能够对你有帮助：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/beb8d611340a">Hexo博客从一台电脑迁移到其他电脑</a></li>
+<li><a href="https://www.zhihu.com/question/21193762/answer/79109280">使用hexo，如果换了电脑怎么更新博客？ - CrazyMilk的回答 - 知乎</a></li>
+<li><a href="https://www.jianshu.com/p/0b1fccce74e0">利用Hexo在多台电脑上提交和更新github pages博客</a></li>
+</ol>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

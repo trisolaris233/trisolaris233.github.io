@@ -3,14 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://trisolaris233.github.io/</loc>
-    <lastmod>2022-04-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url><url>
+    <loc>https://trisolaris233.github.io/posts/new/</loc>
+    <lastmod>2022-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://trisolaris233.github.io/posts/new/self-deceit_can_buy_you_freedom/</loc>
+    <lastmod>2022-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://trisolaris233.github.io/posts/</loc>
     <lastmod>2022-04-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://trisolaris233.github.io/posts/new/</loc>
-    <lastmod>2022-04-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://trisolaris233.github.io/posts/new/2-years-anniversary-atricle/</loc>
     <lastmod>2022-04-07T00:00:00+00:00</lastmod>
@@ -69,10 +72,10 @@
     <loc>https://trisolaris233.github.io/posts/old/%E6%97%A7%E6%9C%AC%E4%BD%8D%E9%9D%A2%E7%9A%84%E5%B8%88%E7%94%9F%E4%BA%A4%E6%B5%81/</loc>
     <lastmod>2018-12-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://trisolaris233.github.io/posts/old/</loc>
+    <loc>https://trisolaris233.github.io/posts/old/%E6%97%A7%E7%BC%85%E6%80%80%E9%87%91%E5%BA%B8%E5%85%88%E7%94%9F/</loc>
     <lastmod>2018-11-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://trisolaris233.github.io/posts/old/%E6%97%A7%E7%BC%85%E6%80%80%E9%87%91%E5%BA%B8%E5%85%88%E7%94%9F/</loc>
+    <loc>https://trisolaris233.github.io/posts/old/</loc>
     <lastmod>2018-11-02T00:00:00+00:00</lastmod>
   </url>
 </urlset>

@@ -11,7 +11,7 @@
 <meta name="description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
 当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
 备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
- 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &#34;hexo environment files.&#34; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
 换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）" />
 <meta name="keywords" content="" />
 
@@ -20,12 +20,12 @@
 <meta property="og:description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
 当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
 备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
- 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &#34;hexo environment files.&#34; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
 换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://trisolaris233.github.io/posts/old/deploy-hexo-cross-computers/" /><meta property="og:image" content="https://trisolaris233.github.io/images/share.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-01-27T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-01-27T00:00:00&#43;00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
+<meta property="article:published_time" content="2019-01-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-01-27T00:00:00+00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
 
 
 
@@ -37,7 +37,7 @@
 <meta name="twitter:description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
 当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
 备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
- 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &#34;hexo environment files.&#34; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
 换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）"/>
 
 
@@ -46,9 +46,9 @@
 <meta itemprop="description" content="最近换了系统，想在新的系统上继续编辑我的博客， 于是就出现了问题： 我发现我用hexo的deployer-git备份的文件都是渲染后的html文件， 而并没有我的原稿(.md)。这给我带来不少麻烦， 于是乎， 上网查询了一些资料， 找到了一些可以在多处编辑hexo博客的办法。
 当用新电脑的时候除了要安装node.js和npm以外， 如果要使用hexo还要安装支持hexo运行的一大堆文件，这些文件我们把他们备份在github上， 如果你使用Github Pages部署你的网页那么可以放在你的Github Pages的repo的一个分支上， 其中保留master分支不受影响（放渲染后的文件供浏览）。
 备份hexo 之后， 其实都是前人总结的经验了， 我在这里用自己的方法赘述一遍，操作之前，要确保你本地有一个已经安装好的hexo：
- 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &quot;hexo environment files.&quot; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
-换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）"><meta itemprop="datePublished" content="2019-01-27T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-01-27T00:00:00&#43;00:00" />
+ 在博客的repo上创建分支hexo， 这个分支用来备份hexo的运行环境文件， 并在repo的setting中将hexo分支设为默认分支。 将博客克隆到本地: git clone https://github.com/trisolaris233/trisolaris233.github.io 此时克隆下来了一个trisolaris233.github.io的文件夹， cd进去， 此时这个目录应该全是渲染后的文件， 这时候你把hexo文件夹下的东西都拖进去（没事， 都拖进去罢）。 创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外： 写入内容:  .DS_Store Thumbs.db db.json *.log node_modules/ public/ .deploy*/ 几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：  git add . git commit -m &#34;hexo environment files.&#34; git push origin hexo 以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的master分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。
+换电脑后 终于你换了一台电脑，你现在要做的就是在新电脑上安装node.js, npm, git。 安装完成之后，clone你的远程repo（因为默认已经设置成了hexo分支因此我们clone下来的自然也是hexo分支）。 cd到clone下的目录中去， 执行npm install即可。（注意： 这里需要遵守的一个规则就是用npm安装与hexo相关内容是要添加&ndash;save选项）"><meta itemprop="datePublished" content="2019-01-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-01-27T00:00:00+00:00" />
 <meta itemprop="wordCount" content="130"><meta itemprop="image" content="https://trisolaris233.github.io/images/share.png"/>
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -272,7 +272,7 @@
 <li>创建一个.gitignore文件（如果已经存在则对比文件内容）， 将于环境无关的文件/目录排除在外：
 写入内容:</li>
 </ol>
-<pre><code>.DS_Store
+<pre tabindex="0"><code>.DS_Store
 Thumbs.db
 db.json
 *.log
@@ -282,8 +282,8 @@ public/
 </code></pre><ol start="5">
 <li>几乎全部都搞定了， 接下来只要在终端中执行上传的代码即可：</li>
 </ol>
-<pre><code class="language-git" data-lang="git">git add .
-git commit -m &quot;hexo environment files.&quot;
+<pre tabindex="0"><code class="language-git" data-lang="git">git add .
+git commit -m &#34;hexo environment files.&#34;
 git push origin hexo
 </code></pre><p>以上我们就基本搞定了hexo文件的备份，这样hexo每次deploy的时候会把hexo渲染后的文件推送到repo的<code>master</code>分支， 这是hexo会自动完成的， 因此我们要对付的只有环境文件， 在你创建了新的post的时候或者添加了一些插件、主题的时候你都应该commit至hexo分支。</p>
 <h2 id="换电脑后">换电脑后</h2>

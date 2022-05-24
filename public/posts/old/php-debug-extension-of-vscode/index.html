@@ -32,8 +32,8 @@ debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebu
 后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://trisolaris233.github.io/posts/old/php-debug-extension-of-vscode/" /><meta property="og:image" content="https://trisolaris233.github.io/images/share.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-02-10T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-02-10T00:00:00&#43;00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
+<meta property="article:published_time" content="2019-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-02-10T00:00:00+00:00" /><meta property="og:site_name" content="SunshinePlusIce" />
 
 
 
@@ -63,8 +63,8 @@ Php Debug的原理 来一波倒叙，首先先介绍原理，这样可能会更�
 首先， 你应该会在vscode里面打了几个断点然后启动debug吧， 这时候其实启动了xdebug的程序，这个程序按照默认配置会监听127.0.0.1:9000，他等待的是php的连接(我一开始就在浏览器中访问localhost:9000，结果啥也没发生，请求多了还会导致连接关闭)。 假设你的服务器的DocumentRoot设在~/www下。你正在vscode中调试的文件是~/www/test/index.php，这时候你在浏览器进入localhost/test/index.php，如果正确配置应该会使浏览器唤起fastcgi,php-fpm等进程工作并且最后执行php源代码的解析。解析时php会发现自己设置了debug选项(因为我们已经在php.ini文件中设置好了)，按照默认，就回去连接正在监听中的xdebug进程。 这样就完成了对接，于是debug就开始了。
 debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebug原理图解》 {% asset_img xdebug-process.png %} (好久没用processOn，我发现这玩意儿真是好用！！(之前尝试用gimp画图的 - -)
 好了，我要怎么安装呢？ 事实上， 对于上面的介绍有一点非常让我疑惑不解，就是这句话：XDebug is a PHP extension (a .so file on Linux and a .dll on Windows) that needs to be installed on your server.，这句话意思说xdebug不仅要为php安装还要为服务器安装，然而我自己编译的apache2.4编译时并未选择什么xdebug，之后也从未折腾(配置好php解析后)， 所以一直很疑惑。
-后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。"><meta itemprop="datePublished" content="2019-02-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-02-10T00:00:00&#43;00:00" />
+后来， 我look up了xdebug的官方文档，官网在谈“installation”时候并未提到什么服务器，这里就更让人疑惑了， 为啥一边说需要装在服务器上，一边却只字不提？ 这时候我选择相信官方， 所以就走下面的步骤。"><meta itemprop="datePublished" content="2019-02-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-02-10T00:00:00+00:00" />
 <meta itemprop="wordCount" content="142"><meta itemprop="image" content="https://trisolaris233.github.io/images/share.png"/>
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -304,7 +304,7 @@ debug过程图解 平时都不画UML图的说&hellip; 这回来了一张《xdebu
 中间可能会出现的问题：执行<code>./configure</code>提示需要<code>php-config</code>的路径， 这个问题我也遇到了， 如果你是用包管理器安装的php则不会有这个问题。<code>php-config</code>的路径和<code>php</code>的可执行文件位于同一目录中， 具体取决于你编译时的安装位置。
 {% endblockquote %}</p>
 <p>装上<code>xdebug</code>后， 又回到了插件官方文档， 我们需要在<code>php.ini</code>文件中写入以下内容</p>
-<pre><code>[XDebug]
+<pre tabindex="0"><code>[XDebug]
 xdebug.remote_enable = 1
 xdebug.remote_autostart = 1
 </code></pre><p>很容易理解， 分别是打开远程debug和自动启动远程debug。</p>
